@@ -1,6 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cik7ht5ixbnpd"]
-
-[ext_resource type="Script" path="res://StateMachine.gd" id="1_jowf5"]
+[gd_scene load_steps=3 format=3 uid="uid://cik7ht5ixbnpd"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3ofc"]
 
@@ -21,5 +19,4 @@ root_node = NodePath("../Sprite2D")
 tree_root = SubResource("AnimationNodeStateMachine_w6lpy")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="Node" type="Node" parent="."]
-script = ExtResource("1_jowf5")
+[node name="PSM" type="Node" parent="."]
