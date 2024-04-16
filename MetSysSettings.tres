@@ -9,4 +9,4 @@ theme = ExtResource("2_s7rkj")
 map_root_folder = "res://"
 in_game_cell_size = Vector2(1152, 648)
 collectible_list = Array[Dictionary]([])
-assign_uid_to_rooms = false
+assign_uid_to_rooms = true
