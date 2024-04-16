@@ -15,6 +15,7 @@ metroidvania_system/settings_file="res://MetSysSettings.tres"
 [application]
 
 config/name="testing"
+run/main_scene="res://flying_eye.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
