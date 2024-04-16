@@ -231,8 +231,8 @@ radius = 296.002
 script = ExtResource("1_bs55m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_bab40")
-hframes = 4
+texture = ExtResource("3_8rpio")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 2)
