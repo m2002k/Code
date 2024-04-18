@@ -255,19 +255,19 @@ script = ExtResource("5_8705s")
 HP = 50
 bleedable = true
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DamgeArea2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="DamgeShape2D" type="CollisionShape2D" parent="DamgeArea2D"]
 position = Vector2(8, 4)
 rotation = 2.03505
 shape = SubResource("CapsuleShape2D_2l00h")
 one_way_collision_margin = 0.0
 
-[node name="FlyingEyeDamge" type="Node" parent="Area2D"]
+[node name="FlyingEyeDamge" type="Node" parent="DamgeArea2D"]
 script = ExtResource("6_ongdf")
 Plysical = 5
 
 [node name="DetectionArea2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
+[node name="DetectionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
 shape = SubResource("CircleShape2D_2fb6t")

@@ -1,14 +1,11 @@
 [gd_scene load_steps=33 format=3 uid="uid://cmoiol7sh2fng"]
 
-[ext_resource type="Script" path="res://Skeleton.gd" id="1_re4rm"]
+[ext_resource type="Script" path="res://Enemy.gd" id="1_lq7qs"]
 [ext_resource type="Texture2D" uid="uid://dtvbw0s7cp483" path="res://texter/Skeleton/Idle.png" id="2_rowoo"]
 [ext_resource type="Texture2D" uid="uid://cr2weqf6inblw" path="res://texter/Skeleton/Attack.png" id="2_v3my1"]
 [ext_resource type="Texture2D" uid="uid://mnopi7u517pg" path="res://texter/Skeleton/Walk.png" id="3_r3lny"]
 [ext_resource type="Script" path="res://SkeletonHealth.gd" id="4_gwco8"]
 [ext_resource type="Texture2D" uid="uid://clj7jvwn7o7ty" path="res://texter/Skeleton/Death.png" id="5_jmb55"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jg24l"]
-height = 38.0
 
 [sub_resource type="Animation" id="Animation_0a66v"]
 length = 0.001
@@ -292,6 +289,9 @@ states/walk/position = Vector2(541, 182)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_6phwp"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_e7aqx"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_8p1i4"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_oikyg"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_e316x"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_jh12i"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_twvx4"), "attack", "dead", SubResource("AnimationNodeStateMachineTransition_asxph"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_xy141"), "walk", "dead", SubResource("AnimationNodeStateMachineTransition_ky8pk"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_jh2b2")]
 graph_offset = Vector2(0, -17.7295)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_di13v"]
+height = 36.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o11uy"]
 radius = 14.9972
 height = 60.0273
@@ -314,16 +314,13 @@ func _process(delta):
 radius = 189.024
 
 [node name="Skeleton" type="CharacterBody2D"]
-script = ExtResource("1_re4rm")
+script = ExtResource("1_lq7qs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3, -1)
 scale = Vector2(0.765, 0.67)
 texture = ExtResource("2_rowoo")
 hframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_jg24l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -336,6 +333,11 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_f5bp4")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_di13v")
+one_way_collision = true
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("4_gwco8")
@@ -357,6 +359,6 @@ bleeding = 5
 
 [node name="DetectionArea2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
+[node name="DetectionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
 shape = SubResource("CircleShape2D_4l2uc")
 one_way_collision_margin = 0.0
