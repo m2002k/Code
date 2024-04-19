@@ -24,5 +24,7 @@ func _physics_process(delta):
 			facing_right = false
 			
 	move_and_slide()
-	
+	Updata_animation()
 
+func Updata_animation():
+	animation_tree.set("parameters/move/blend_position", velocity.x)
