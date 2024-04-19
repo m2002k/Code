@@ -203,8 +203,6 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jntvk"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0vplf"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j704q"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ucgkj"]
@@ -213,14 +211,18 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ui6m"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_an6jc"]
+switch_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kr5df"]
+states/End/position = Vector2(797, 95)
 states/attack/node = SubResource("AnimationNodeAnimation_5164t")
 states/attack/position = Vector2(539, 36)
 states/dead/node = SubResource("AnimationNodeAnimation_n4brk")
-states/dead/position = Vector2(539, 127)
+states/dead/position = Vector2(677, 95)
 states/idle/node = SubResource("AnimationNodeAnimation_pm62h")
 states/idle/position = Vector2(328, 100)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wbvt3"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_jntvk"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_0vplf"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_j704q"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_ucgkj"), "attack", "dead", SubResource("AnimationNodeStateMachineTransition_3ui6m")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wbvt3"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_jntvk"), "idle", "dead", SubResource("AnimationNodeStateMachineTransition_j704q"), "dead", "End", SubResource("AnimationNodeStateMachineTransition_ucgkj"), "attack", "dead", SubResource("AnimationNodeStateMachineTransition_3ui6m"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_an6jc")]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2l00h"]
 
@@ -256,6 +258,7 @@ HP = 50
 bleedable = true
 
 [node name="DamgeArea2D" type="Area2D" parent="."]
+visible = false
 
 [node name="DamgeShape2D" type="CollisionShape2D" parent="DamgeArea2D"]
 position = Vector2(8, 4)
@@ -268,6 +271,7 @@ script = ExtResource("6_ongdf")
 Plysical = 5
 
 [node name="DetectionArea2D" type="Area2D" parent="."]
+visible = false
 
 [node name="DetectionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
 shape = SubResource("CircleShape2D_2fb6t")

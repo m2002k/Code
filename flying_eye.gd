@@ -6,6 +6,7 @@ extends CharacterBody2D
 var facing_right = true
 
 func _physics_process(delta):
+	#filp
 	if(velocity.x<0):
 		Sprite.flip_h=true
 		facing_right = true
