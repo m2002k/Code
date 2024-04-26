@@ -252,6 +252,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_kr5df")
 anim_player = NodePath("../AnimationPlayer")
 
+[node name="FESM" type="Node" parent="."]
+
 [node name="FlyingEyeHealth" type="Node" parent="."]
 script = ExtResource("5_8705s")
 HP = 50
