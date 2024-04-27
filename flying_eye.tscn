@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://saibb8futucg"]
+[gd_scene load_steps=26 format=3 uid="uid://saibb8futucg"]
 
 [ext_resource type="Script" path="res://flying_eye.gd" id="1_bs55m"]
 [ext_resource type="Texture2D" uid="uid://48fogkh1cp05" path="res://texter/Flying eye/Take Hit.png" id="2_bab40"]
 [ext_resource type="Texture2D" uid="uid://b11qrwbwnyn0f" path="res://texter/Flying eye/Attack.png" id="2_s2sli"]
 [ext_resource type="Texture2D" uid="uid://coyxvs3qcor22" path="res://texter/Flying eye/Flight.png" id="3_8rpio"]
+[ext_resource type="Script" path="res://FESM.gd" id="5_0tx8l"]
 [ext_resource type="Script" path="res://FlyingEyeHealth.gd" id="5_8705s"]
 [ext_resource type="Script" path="res://FlyingEyeDamge.gd" id="6_ongdf"]
 
@@ -229,8 +230,9 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fb6t"]
 radius = 296.002
 
-[node name="FlyingEye" type="CharacterBody2D"]
+[node name="FlyingEye" type="CharacterBody2D" node_paths=PackedStringArray("Health")]
 script = ExtResource("1_bs55m")
+Health = NodePath("FlyingEyeHealth")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_8rpio")
@@ -253,6 +255,7 @@ tree_root = SubResource("AnimationNodeStateMachine_kr5df")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="FESM" type="Node" parent="."]
+script = ExtResource("5_0tx8l")
 
 [node name="FlyingEyeHealth" type="Node" parent="."]
 script = ExtResource("5_8705s")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cik7ht5ixbnpd"]
+[gd_scene load_steps=57 format=3 uid="uid://cik7ht5ixbnpd"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_vtdhy"]
 [ext_resource type="Texture2D" uid="uid://cuxe60awllifd" path="res://texter/Player/_Run.png" id="2_a20kx"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://attack.gd" id="12_n5top"]
 [ext_resource type="Script" path="res://roll.gd" id="13_foeac"]
 [ext_resource type="Script" path="res://air.gd" id="14_vgtph"]
+[ext_resource type="Script" path="res://Area2D.gd" id="17_e4ics"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3ofc"]
 height = 34.0
@@ -450,6 +451,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../heath:ummunity")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7i7xe"]
 _data = {
@@ -560,8 +573,9 @@ graph_offset = Vector2(-2.89301, 13.3189)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vx1w"]
 size = Vector2(53, 37)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("Health")]
 script = ExtResource("1_vtdhy")
+Health = NodePath("heath")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, -19)
@@ -582,6 +596,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 root_node = NodePath("../Sprite2D")
 libraries = {
 "": SubResource("AnimationLibrary_7i7xe")
@@ -620,7 +635,7 @@ bleeding_resistant = 5
 bleedable = true
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
+script = ExtResource("17_e4ics")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(25.5, -2.5)

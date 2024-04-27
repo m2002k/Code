@@ -4,12 +4,19 @@ extends CharacterBody2D
 @onready var JUMP_VELOCITY = -400.0
 @onready var Sprite =$Sprite2D
 @onready var animation_tree = $AnimationTree
+@export  var Health : Damageable
+@export var team: String
+
 var facing_right = true
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	animation_tree.active = true
+	for child in get_children():
+		if (child is Damageable):
+			Health = child
+	Health.team=team
 
 func _physics_process(delta):
 	# Add the gravity.

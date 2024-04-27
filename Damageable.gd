@@ -17,15 +17,15 @@ class_name Damageable
 @export var bleedable: bool
 @export var Undead: bool
 @export var Wet: bool 
+@export var ummunity: bool 
 
 func hit(damge : Damge):
-	if (damge.team==team):
+	if (damge.team==team && !ummunity):
 		HP-=DamgeCont(damge.Plysical,plysical_resistant)
-	if (Undead):
-		HP-=damge.healing
-	else :
-		HP+=damge.healing
-		
+		if (Undead):
+			HP-=damge.healing
+		else :
+			HP+=damge.healing
 
 func DamgeCont(damge: int,resistant: int):
 	return damge*(1-(resistant/100))
