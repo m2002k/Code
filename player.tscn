@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://attack.gd" id="12_n5top"]
 [ext_resource type="Script" path="res://roll.gd" id="13_foeac"]
 [ext_resource type="Script" path="res://air.gd" id="14_vgtph"]
-[ext_resource type="Script" path="res://Area2D.gd" id="17_e4ics"]
+[ext_resource type="Script" path="res://DamgeArea.gd" id="17_e4ics"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3ofc"]
 height = 34.0
@@ -576,6 +576,7 @@ size = Vector2(53, 37)
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("Health")]
 script = ExtResource("1_vtdhy")
 Health = NodePath("heath")
+team = "player"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, -19)
