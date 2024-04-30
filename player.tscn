@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://attack.gd" id="12_n5top"]
 [ext_resource type="Script" path="res://roll.gd" id="13_foeac"]
 [ext_resource type="Script" path="res://air.gd" id="14_vgtph"]
-[ext_resource type="Script" path="res://DamgeArea.gd" id="17_e4ics"]
+[ext_resource type="Script" path="res://Area2D.gd" id="17_lp8pk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3ofc"]
 height = 34.0
@@ -573,22 +573,23 @@ graph_offset = Vector2(-2.89301, 13.3189)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vx1w"]
 size = Vector2(53, 37)
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("Health")]
+[node name="player" type="CharacterBody2D"]
 script = ExtResource("1_vtdhy")
-Health = NodePath("heath")
 team = "player"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, -19)
 scale = Vector2(0.908333, 0.8625)
-texture = ExtResource("6_jrd6b")
-hframes = 4
+texture = ExtResource("8_v1byf")
+hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_v3ofc")
+one_way_collision = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
@@ -606,14 +607,19 @@ tree_root = SubResource("AnimationNodeStateMachine_w6lpy")
 anim_player = NodePath("../AnimationPlayer")
 parameters/move/blend_position = Vector2(-0.00366974, 0.026455)
 
-[node name="PSM" type="Node" parent="."]
+[node name="PSM" type="Node" parent="." node_paths=PackedStringArray("character", "Animation_tree", "Current_state")]
 script = ExtResource("11_w7uyt")
+character = NodePath("..")
+Animation_tree = NodePath("../AnimationTree")
+Current_state = NodePath("ground")
 
 [node name="death" type="Node" parent="PSM"]
 script = ExtResource("12_3q38t")
 
-[node name="ground" type="Node" parent="PSM"]
+[node name="ground" type="Node" parent="PSM" node_paths=PackedStringArray("Airstate", "Attackstate")]
 script = ExtResource("11_2sjkl")
+Airstate = NodePath("../air")
+Attackstate = NodePath("../attack")
 
 [node name="attack" type="Node" parent="PSM"]
 script = ExtResource("12_n5top")
@@ -636,7 +642,8 @@ bleeding_resistant = 5
 bleedable = true
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("17_e4ics")
+visible = false
+script = ExtResource("17_lp8pk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(25.5, -2.5)

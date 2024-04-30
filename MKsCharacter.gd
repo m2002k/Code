@@ -6,7 +6,8 @@ class_name MKsCharacter
 @onready var Sprite =$Sprite2D
 @onready var animation_tree = $AnimationTree
 @export var facing_right = true
-@export  var Health : Damageable
+var Health : Damageable
+var damgeArea : DamgeArea
 @export var team: String
 
 func _ready():
@@ -15,6 +16,9 @@ func _ready():
 		if (child is Damageable):
 			Health = child
 			Health.team=team
+		if (child is DamgeArea):
+			damgeArea = child
+			damgeArea.team=team
 
 func _physics_process(delta):
 	#filp

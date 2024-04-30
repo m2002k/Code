@@ -1,14 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3oqud6u5jwj6"]
+[gd_scene load_steps=2 format=3 uid="uid://c3oqud6u5jwj6"]
 
 [ext_resource type="PackedScene" uid="uid://cik7ht5ixbnpd" path="res://player.tscn" id="1_dqndb"]
-[ext_resource type="PackedScene" uid="uid://cmoiol7sh2fng" path="res://Skeleton.tscn" id="2_eimxf"]
 
 [node name="testing ground" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_dqndb")]
 position = Vector2(28, 1)
-
-[node name="Skeleton" parent="." instance=ExtResource("2_eimxf")]
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 2

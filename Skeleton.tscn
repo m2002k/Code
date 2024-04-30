@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cmoiol7sh2fng"]
+[gd_scene load_steps=33 format=3 uid="uid://cmoiol7sh2fng"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_lq7qs"]
 [ext_resource type="Texture2D" uid="uid://dtvbw0s7cp483" path="res://texter/Skeleton/Idle.png" id="2_rowoo"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://SkeletonHealth.gd" id="4_gwco8"]
 [ext_resource type="Texture2D" uid="uid://clj7jvwn7o7ty" path="res://texter/Skeleton/Death.png" id="5_jmb55"]
 [ext_resource type="Script" path="res://SSM.gd" id="6_i0jdo"]
+[ext_resource type="Script" path="res://SKground.gd" id="7_wygis"]
+[ext_resource type="Script" path="res://DamgeArea2D.gd" id="8_7pnmj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_di13v"]
 height = 36.0
@@ -315,9 +317,8 @@ func _process(delta):
 [sub_resource type="CircleShape2D" id="CircleShape2D_4l2uc"]
 radius = 189.024
 
-[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("Health")]
+[node name="Skeleton" type="CharacterBody2D"]
 script = ExtResource("1_lq7qs")
-Health = NodePath("Damageable")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3, -1)
@@ -343,16 +344,26 @@ tree_root = SubResource("AnimationNodeStateMachine_f5bp4")
 anim_player = NodePath("../AnimationPlayer")
 parameters/move/blend_position = Vector2(0, 0)
 
-[node name="SSM" type="Node" parent="."]
+[node name="SSM" type="Node" parent="." node_paths=PackedStringArray("character", "Animation_tree", "Current_state")]
 script = ExtResource("6_i0jdo")
+character = NodePath("..")
+Animation_tree = NodePath("../AnimationTree")
+Current_state = NodePath("ground")
+
+[node name="death" type="Node" parent="SSM"]
+
+[node name="ground" type="Node" parent="SSM"]
+script = ExtResource("7_wygis")
+
+[node name="attack" type="Node" parent="SSM"]
 
 [node name="Damageable" type="Node" parent="."]
 script = ExtResource("4_gwco8")
-team = "Skeleton"
 Undead = true
 
 [node name="DamgeArea2D" type="Area2D" parent="."]
 visible = false
+script = ExtResource("8_7pnmj")
 
 [node name="DamgeShape2D" type="CollisionShape2D" parent="DamgeArea2D"]
 position = Vector2(25, -5)
@@ -362,7 +373,6 @@ debug_color = Color(0.917647, 0.247059, 0.368627, 0.419608)
 
 [node name="Damge" type="Node" parent="DamgeArea2D"]
 script = SubResource("GDScript_4gukm")
-team = "Skeleton"
 Plysical = 10
 bleeding = 5
 
