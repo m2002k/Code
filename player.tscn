@@ -607,19 +607,28 @@ tree_root = SubResource("AnimationNodeStateMachine_w6lpy")
 anim_player = NodePath("../AnimationPlayer")
 parameters/move/blend_position = Vector2(-0.00366974, 0.026455)
 
-[node name="PSM" type="Node" parent="." node_paths=PackedStringArray("character", "Animation_tree", "Current_state")]
+[node name="PSM" type="Node" parent="."]
 script = ExtResource("11_w7uyt")
-character = NodePath("..")
-Animation_tree = NodePath("../AnimationTree")
-Current_state = NodePath("ground")
+character = Object(CharacterBody2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":0,"collision_layer":1,"collision_mask":1,"collision_priority":1.0,"input_pickable":false,"motion_mode":0,"up_direction":Vector2(0, -1),"velocity":Vector2(0, 0),"slide_on_ceiling":true,"max_slides":4,"wall_min_slide_angle":0.261799,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.785398,"floor_snap_length":1.0,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.08,"script":ExtResource("1_vtdhy"),"facing_right":true,"team":"player")
+
+Animation_tree = Object(AnimationTree,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","active":false,"deterministic":true,"reset_on_save":true,"root_node":NodePath("../Sprite2D"),"root_motion_track":NodePath(""),"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"libraries":{
+"": SubResource("AnimationLibrary_7i7xe")
+},"tree_root":SubResource("AnimationNodeStateMachine_w6lpy"),"advance_expression_base_node":NodePath("."),"anim_player":NodePath("../AnimationPlayer"),"parameters/move/blend_position":Vector2(-0.00366974, 0.026455),"script":null)
+
+Current_state = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("11_2sjkl"),"Airstate":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("14_vgtph"))
+,"Attackstate":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("12_n5top"))
+)
+
 
 [node name="death" type="Node" parent="PSM"]
 script = ExtResource("12_3q38t")
 
-[node name="ground" type="Node" parent="PSM" node_paths=PackedStringArray("Airstate", "Attackstate")]
+[node name="ground" type="Node" parent="PSM"]
 script = ExtResource("11_2sjkl")
-Airstate = NodePath("../air")
-Attackstate = NodePath("../attack")
+Airstate = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("14_vgtph"))
+
+Attackstate = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("12_n5top"))
+
 
 [node name="attack" type="Node" parent="PSM"]
 script = ExtResource("12_n5top")

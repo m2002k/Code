@@ -1251,7 +1251,7 @@ texture_region_size = Vector2i(32, 32)
 4:14/0/physics_layer_0/angular_velocity = 0.0
 
 [resource]
-tile_size = Vector2i(32, 32)
+tile_size = Vector2i(31, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_fpi3u")
 sources/2 = SubResource("TileSetAtlasSource_fpi4u")
