@@ -23,6 +23,9 @@ func _physics_process(delta):
 func if_Can_move():
 	return Current_state.can_move
 
+func _input(event : InputEvent):
+	Current_state.State_input(event)
+
 func switch_states(new_state : State):
 	if(Current_state!=null):
 		Current_state.on_exit()

@@ -327,6 +327,7 @@ texture = ExtResource("2_rowoo")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 3
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_di13v")
 one_way_collision = true
@@ -363,9 +364,13 @@ Undead = true
 
 [node name="DamgeArea2D" type="Area2D" parent="."]
 visible = false
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("8_7pnmj")
 
 [node name="DamgeShape2D" type="CollisionShape2D" parent="DamgeArea2D"]
+light_mask = 2
+visibility_layer = 0
 position = Vector2(25, -5)
 rotation = -4.69319
 shape = SubResource("CapsuleShape2D_o11uy")
@@ -380,6 +385,8 @@ bleeding = 5
 visible = false
 
 [node name="DetectionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
+light_mask = 2
+visibility_layer = 0
 shape = SubResource("CircleShape2D_4l2uc")
 one_way_collision_margin = 0.0
 debug_color = Color(0.486275, 0.54902, 0.54902, 0.419608)

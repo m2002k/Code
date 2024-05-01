@@ -8,6 +8,7 @@ class_name MKsCharacter
 @export var facing_right = true
 var Health : Damageable
 var damgeArea : DamgeArea
+var SM: StateMachine
 @export var team: String
 
 func _ready():
@@ -19,6 +20,8 @@ func _ready():
 		if (child is DamgeArea):
 			damgeArea = child
 			damgeArea.team=team
+		if (child is StateMachine):
+			SM = child
 
 func _physics_process(delta):
 	#filp

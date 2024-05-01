@@ -16,8 +16,8 @@ func _physics_process(delta):
 		Sprite.flip_h=false
 		facing_right = false
 	# movment
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
+	var direction = Input.get_axis("left", "right")
+	if direction && SM.if_Can_move():
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
