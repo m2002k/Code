@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b25n5ksxhaxkj"]
+[gd_scene load_steps=24 format=3 uid="uid://daqpyyft82q1a"]
 
 [ext_resource type="PackedScene" uid="uid://cdbeu2j3o78ll" path="res://SampleProject/Maps/Corridor.tscn" id="1_sewen"]
 [ext_resource type="PackedScene" uid="uid://d4fjrnd3vvemj" path="res://SampleProject/Maps/DarkCorridor.tscn" id="2_tkstr"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bivakijktfees" path="res://SampleProject/Maps/ElevatorRoom.tscn" id="6_g65a1"]
 [ext_resource type="PackedScene" uid="uid://th6yo5pc7h8e" path="res://SampleProject/Maps/EndingPoint.tscn" id="7_uddgo"]
 [ext_resource type="PackedScene" uid="uid://bikgu4uxf7vxt" path="res://SampleProject/Maps/Junction.tscn" id="8_3iabc"]
-[ext_resource type="PackedScene" uid="uid://fry83bxgphhe" path="res://SampleProject/Maps/LavaCorridor.tscn" id="9_t5dr5"]
+[ext_resource type="PackedScene" path="res://SampleProject/Maps/LavaCorridor.tscn" id="9_t5dr5"]
 [ext_resource type="PackedScene" uid="uid://dko1blssmx6yj" path="res://SampleProject/Maps/LavaCorridorAfterwater.tscn" id="10_ocq7k"]
 [ext_resource type="PackedScene" uid="uid://b1nanw80m5sqa" path="res://SampleProject/Maps/LeftStaircase.tscn" id="11_jsjkm"]
 [ext_resource type="PackedScene" uid="uid://dafqk3u71on41" path="res://SampleProject/Maps/PortalRoom.tscn" id="12_8mmcp"]
