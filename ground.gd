@@ -13,9 +13,9 @@ func State_input (event : InputEvent):
 	if (event.is_action_pressed("jump")):
 		Jump()
 		next_state=Airstate
-	elif (event.is_action_pressed("Attack")):
-		playback.travel(Attack_Aimation)
+	if (event.is_action_pressed("Attack")):
 		next_state=Attackstate
+		playback.travel(Attack_Aimation)
 
 func State_prosse():
 	if(!character.is_on_floor()):
