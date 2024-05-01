@@ -233,7 +233,9 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 radius = 296.002
 
 [node name="FlyingEye" type="CharacterBody2D"]
+visibility_layer = 3
 script = ExtResource("1_bs55m")
+team = "FlyingEye"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_8rpio")
@@ -242,6 +244,7 @@ hframes = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 2)
 shape = SubResource("CircleShape2D_fqf56")
+one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -280,9 +283,12 @@ bleedable = true
 
 [node name="DamgeArea2D" type="Area2D" parent="."]
 visible = false
+monitoring = false
 script = ExtResource("7_1r138")
 
 [node name="DamgeShape2D" type="CollisionShape2D" parent="DamgeArea2D"]
+light_mask = 2
+visibility_layer = 0
 position = Vector2(8, 4)
 rotation = 2.03505
 shape = SubResource("CapsuleShape2D_2l00h")
@@ -298,5 +304,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="DetectionShape2D" type="CollisionShape2D" parent="DetectionArea2D"]
+light_mask = 2
+visibility_layer = 0
 shape = SubResource("CircleShape2D_2fb6t")
 debug_color = Color(0.458824, 0.556863, 0.584314, 0.419608)

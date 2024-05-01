@@ -2,7 +2,7 @@ extends Node
 
 class_name StateMachine
 
-@export var character: CharacterBody2D
+@export var character: MKsCharacter
 @export var Animation_tree : AnimationTree
 @export var Current_state: State
 
@@ -22,6 +22,9 @@ func _physics_process(delta):
 
 func if_Can_move():
 	return Current_state.can_move
+
+func _input(event : InputEvent):
+	Current_state.State_input(event)
 
 func switch_states(new_state : State):
 	if(Current_state!=null):
