@@ -235,6 +235,7 @@ radius = 296.002
 [node name="FlyingEye" type="CharacterBody2D"]
 visibility_layer = 3
 script = ExtResource("1_bs55m")
+team = "FlyingEye"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_8rpio")
@@ -243,6 +244,7 @@ hframes = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 2)
 shape = SubResource("CircleShape2D_fqf56")
+one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -276,6 +278,7 @@ bleedable = true
 
 [node name="DamgeArea2D" type="Area2D" parent="."]
 visible = false
+monitoring = false
 script = ExtResource("7_1r138")
 
 [node name="DamgeShape2D" type="CollisionShape2D" parent="DamgeArea2D"]

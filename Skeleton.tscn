@@ -319,6 +319,7 @@ radius = 189.024
 
 [node name="Skeleton" type="CharacterBody2D"]
 script = ExtResource("1_lq7qs")
+team = "Skeletons"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3, -1)
@@ -366,6 +367,7 @@ Undead = true
 visible = false
 collision_layer = 0
 collision_mask = 2
+monitoring = false
 script = ExtResource("8_7pnmj")
 
 [node name="DamgeShape2D" type="CollisionShape2D" parent="DamgeArea2D"]
