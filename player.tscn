@@ -660,10 +660,13 @@ Airstate = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,
 Attackstate = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("12_n5top"))
 
 
-[node name="attack" type="Node" parent="PSM" node_paths=PackedStringArray("Groundstate")]
+[node name="attack" type="Node" parent="PSM"]
 script = ExtResource("12_n5top")
-Groundstate = NodePath("../ground")
 can_move = false
+Groundstate = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("11_2sjkl"),"Airstate":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("14_vgtph"))
+,"Attackstate":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("12_n5top"))
+)
+
 
 [node name="Timer" type="Timer" parent="PSM/attack"]
 wait_time = 0.3
@@ -672,9 +675,12 @@ one_shot = true
 [node name="roll" type="Node" parent="PSM"]
 script = ExtResource("13_foeac")
 
-[node name="air" type="Node" parent="PSM" node_paths=PackedStringArray("Groundstate")]
+[node name="air" type="Node" parent="PSM"]
 script = ExtResource("14_vgtph")
-Groundstate = NodePath("../ground")
+Groundstate = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("11_2sjkl"),"Airstate":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("14_vgtph"))
+,"Attackstate":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("12_n5top"))
+)
+
 
 [node name="heath" type="Node" parent="."]
 script = ExtResource("10_siuxc")
