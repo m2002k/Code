@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1ao5af3vyraq"]
+[gd_scene load_steps=8 format=3 uid="uid://b1ao5af3vyraq"]
 
 [ext_resource type="Texture2D" uid="uid://dg4qarhnvde0c" path="res://ENV/2d_metroidvania_serie_mockup_1_tileset.png" id="1_jxa8n"]
 [ext_resource type="Script" path="res://NEWMAP.gd" id="1_n8tpb"]
 [ext_resource type="PackedScene" uid="uid://saibb8futucg" path="res://flying_eye.tscn" id="4_qdg3u"]
+[ext_resource type="PackedScene" uid="uid://cik7ht5ixbnpd" path="res://player.tscn" id="5_mtv63"]
 [ext_resource type="PackedScene" uid="uid://cmoiol7sh2fng" path="res://Skeleton.tscn" id="5_vu44p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8t7i"]
@@ -206,3 +207,6 @@ position = Vector2(617, -538)
 
 [node name="Skeleton" parent="." instance=ExtResource("5_vu44p")]
 position = Vector2(549, -438)
+
+[node name="player" parent="." instance=ExtResource("5_mtv63")]
+position = Vector2(262, -81)
