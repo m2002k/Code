@@ -2,34 +2,33 @@ extends Node
 
 class_name StateMachine
 
-var current_state: Object
+@export var character: MKsCharacter
+@export var Animation_tree : AnimationTree
+@export var Current_state: State
 
-var history = []
-var states = {}
+var states :Array[State]
 
 func _ready():
-	for state in get_children():
-		state.fesm = self
-		states[state.name] = state
-		if current_state:
-			remove_child(state)
-		else:
-			current_state = state
-	current_state.enter()
+	for child in get_children():
+		if (child is State):
+			states.append(child)
+			child.character = character
+			child.playback = Animation_tree["parameters/playback"]
 
+func _physics_process(delta):
+	if(Current_state.next_state != null):
+		switch_states(Current_state.next_state)
+	Current_state.State_prosse()
 
-func change_to(state_name):
-	history.append(current_state.name)
-	set_state(state_name)
+func if_Can_move():
+	return Current_state.can_move
 
+func _input(event : InputEvent):
+	Current_state.State_input(event)
 
-func back():
-	if history.size() > 0:
-		set_state(history.pop_back())
-
-
-func set_state(state_name):
-	remove_child(current_state)
-	current_state = states[state_name]
-	add_child(current_state)
-	current_state.enter()
+func switch_states(new_state : State):
+	if(Current_state!=null):
+		Current_state.on_exit()
+		Current_state.next_state=null
+	Current_state=new_state
+	Current_state.on_enter()
