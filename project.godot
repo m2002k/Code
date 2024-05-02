@@ -27,10 +27,6 @@ MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 
 project/assembly_name="testing"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/MetroidvaniaSystem/EditorExtension/plugin.cfg", "res://addons/MetroidvaniaSystem/plugin.cfg")
-
 [input]
 
 left={
