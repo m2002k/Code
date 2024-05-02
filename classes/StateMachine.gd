@@ -15,7 +15,7 @@ func _ready():
 			states.append(child)
 			child.character = character
 			child.playback = Animation_tree["parameters/playback"]
-			if (child is  DeathState):
+			if (child is DeathState):
 				Death_state=child
 
 func _physics_process(delta):

@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://8vavnoqaoe0s" path="res://texter/Player/_Roll.png" id="9_v480k"]
 [ext_resource type="Script" path="res://Character/PSM.gd" id="10_m0s25"]
 [ext_resource type="Script" path="res://Character/Characters code/ground.gd" id="11_2sjkl"]
-[ext_resource type="Script" path="res://Character/Characters code/death.gd" id="12_3q38t"]
+[ext_resource type="Script" path="res://Character/death.gd" id="11_vvbsv"]
 [ext_resource type="Script" path="res://Character/Characters code/attack.gd" id="12_n5top"]
 [ext_resource type="Script" path="res://Character/Characters code/roll.gd" id="13_foeac"]
 [ext_resource type="Script" path="res://Character/Characters code/air.gd" id="14_vgtph"]
@@ -638,7 +638,7 @@ Animation_tree = NodePath("../AnimationTree")
 Current_state = NodePath("ground")
 
 [node name="death" type="Node" parent="PSM"]
-script = ExtResource("12_3q38t")
+script = ExtResource("11_vvbsv")
 
 [node name="ground" type="Node" parent="PSM" node_paths=PackedStringArray("Airstate", "Attackstate")]
 script = ExtResource("11_2sjkl")
