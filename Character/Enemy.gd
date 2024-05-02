@@ -6,14 +6,7 @@ func _physics_process(delta):
 	#gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	#filp
-		if(velocity.x<0):
-			Sprite.flip_h=true
-			facing_right = true
-		elif (velocity.x>0):
-			Sprite.flip_h=false
-			facing_right = false
-			
+	flip_Updata()
 	move_and_slide()
 	Updata_animation()
 

@@ -1,12 +1,13 @@
 extends Node
 
-class_name State
+class_name StateMachine
 
 @export var character: MKsCharacter
 @export var Animation_tree : AnimationTree
 @export var Current_state: State
-@export var Death_state: State
-@export var states :Array[State]
+var Death_state: DeathState
+
+var states :Array[State]
 
 func _ready():
 	for child in get_children():
@@ -14,7 +15,7 @@ func _ready():
 			states.append(child)
 			child.character = character
 			child.playback = Animation_tree["parameters/playback"]
-			if (child is  State):
+			if (child is  DeathState):
 				Death_state=child
 
 func _physics_process(delta):

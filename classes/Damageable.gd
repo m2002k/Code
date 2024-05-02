@@ -15,7 +15,7 @@ class_name Damageable
 @export var bleedable: bool
 @export var Undead: bool
 @export var Wet: bool 
-@export var ummunity: bool 
+@export var ummunity: bool = false
 
 var team: String
 

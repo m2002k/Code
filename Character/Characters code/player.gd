@@ -8,17 +8,11 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	# filp
-	if(velocity.x<0):
-		Sprite.flip_h=true
-		facing_right = true
-	elif (velocity.x>0):
-		Sprite.flip_h=false
-		facing_right = false
 	# movment
 	var direction = Input.get_axis("left", "right")
 	if direction && SM.if_Can_move():
 		velocity.x = direction * SPEED
+		flip_Updata()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		

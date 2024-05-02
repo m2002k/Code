@@ -8,7 +8,7 @@ class_name MKsCharacter
 @export var facing_right = true
 var Health : Damageable
 var damgeArea : DamgeArea
-var SM: State
+var SM: StateMachine
 @export var team: String
 
 func _ready():
@@ -17,23 +17,24 @@ func _ready():
 		if (child is Damageable):
 			Health = child
 			Health.team=team
-		if (child is DamgeArea):
+		elif (child is DamgeArea):
 			damgeArea = child
 			damgeArea.team=team
-		if (child is State):
+		elif (child is StateMachine):
 			SM = child
 
 func _physics_process(delta):
-	#filp
-	if(velocity.x<0):
-		Sprite.flip_h=true
-		facing_right = true
-	elif (velocity.x>0):
-		Sprite.flip_h=false
-		facing_right = false
-		
+	flip_Updata()
 	move_and_slide()
 	Updata_animation()
 
 func Updata_animation():
 	pass
+
+func  flip_Updata():
+	if(velocity.x<0):
+		Sprite.flip_h=true
+		facing_right = false
+	elif (velocity.x>0):
+		Sprite.flip_h=false
+		facing_right = true
