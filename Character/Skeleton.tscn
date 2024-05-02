@@ -1,14 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://cmoiol7sh2fng"]
+[gd_scene load_steps=28 format=3 uid="uid://cmoiol7sh2fng"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_lq7qs"]
 [ext_resource type="Texture2D" uid="uid://dtvbw0s7cp483" path="res://texter/Skeleton/Idle.png" id="2_rowoo"]
 [ext_resource type="Texture2D" uid="uid://cr2weqf6inblw" path="res://texter/Skeleton/Attack.png" id="2_v3my1"]
 [ext_resource type="Texture2D" uid="uid://mnopi7u517pg" path="res://texter/Skeleton/Walk.png" id="3_r3lny"]
-[ext_resource type="Script" path="res://SkeletonHealth.gd" id="4_gwco8"]
 [ext_resource type="Texture2D" uid="uid://clj7jvwn7o7ty" path="res://texter/Skeleton/Death.png" id="5_jmb55"]
-[ext_resource type="Script" path="res://SSM.gd" id="6_i0jdo"]
-[ext_resource type="Script" path="res://SKground.gd" id="7_wygis"]
-[ext_resource type="Script" path="res://DamgeArea2D.gd" id="8_7pnmj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_di13v"]
 height = 36.0
@@ -300,20 +296,6 @@ graph_offset = Vector2(-91.1582, -49.1557)
 radius = 14.9972
 height = 60.0273
 
-[sub_resource type="GDScript" id="GDScript_4gukm"]
-script/source = "extends Damge
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-"
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_4l2uc"]
 radius = 189.024
 
@@ -346,29 +328,21 @@ tree_root = SubResource("AnimationNodeStateMachine_f5bp4")
 anim_player = NodePath("../AnimationPlayer")
 parameters/move/blend_position = Vector2(0, 0)
 
-[node name="SSM" type="Node" parent="." node_paths=PackedStringArray("character", "Animation_tree", "Current_state")]
-script = ExtResource("6_i0jdo")
-character = NodePath("..")
-Animation_tree = NodePath("../AnimationTree")
-Current_state = NodePath("ground")
+[node name="SSM" type="Node" parent="."]
 
 [node name="death" type="Node" parent="SSM"]
 
 [node name="ground" type="Node" parent="SSM"]
-script = ExtResource("7_wygis")
 
 [node name="attack" type="Node" parent="SSM"]
 
 [node name="Damageable" type="Node" parent="."]
-script = ExtResource("4_gwco8")
-Undead = true
 
 [node name="DamgeArea2D" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
 collision_mask = 2
 monitoring = false
-script = ExtResource("8_7pnmj")
 
 [node name="DamgeShape2D" type="CollisionShape2D" parent="DamgeArea2D"]
 light_mask = 2
@@ -379,9 +353,6 @@ shape = SubResource("CapsuleShape2D_o11uy")
 debug_color = Color(0.917647, 0.247059, 0.368627, 0.419608)
 
 [node name="Damge" type="Node" parent="DamgeArea2D"]
-script = SubResource("GDScript_4gukm")
-Plysical = 10
-bleeding = 5
 
 [node name="DetectionArea2D" type="Area2D" parent="."]
 visible = false
