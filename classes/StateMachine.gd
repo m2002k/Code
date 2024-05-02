@@ -23,7 +23,7 @@ func _physics_process(delta):
 		switch_states(Death_state)
 	elif(Current_state.next_state != null):
 		switch_states(Current_state.next_state)
-	Current_state.State_prosse()
+	Current_state.State_prosse(delta)
 
 func if_Can_move():
 	return Current_state.can_move

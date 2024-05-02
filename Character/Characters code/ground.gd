@@ -5,6 +5,7 @@ extends State
 @export var Attackstate: State
 @export var Jump_Aimation : String = "jump"
 @export var Fulling_Aimation : String = "fulling"
+@export var move_animation : String = "move"
 @export var Attack_Aimation : String = "attack1"
 
 func State_input (event : InputEvent):
@@ -15,7 +16,8 @@ func State_input (event : InputEvent):
 		next_state=Attackstate
 		playback.travel(Attack_Aimation)
 
-func State_prosse():
+func State_prosse(delta):
+	playback.travel(move_animation)
 	if(!character.is_on_floor()):
 		playback.travel(Fulling_Aimation)
 		next_state=Airstate

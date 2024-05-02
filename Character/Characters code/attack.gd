@@ -12,6 +12,9 @@ func State_input (event : InputEvent):
 
 func _on_animation_tree_animation_finished(anim_name):
 	if (anim_name == attack1_name):
-		pass
-	if (anim_name == attack2_name):
+		if (timer.is_stopped()):
+			next_state=Groundstate
+		else :
+			playback.travel(attack2_name)
+	elif (anim_name == attack2_name):
 		next_state=Groundstate

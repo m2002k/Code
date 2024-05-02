@@ -4,12 +4,11 @@ class_name Air_state
 @export var Groundstate: State
 @export var JUMP_VELOCITY = -350
 @export var Double_Jump_Aimation : String = "jamp"
-@export var move_animation : String = "move"
-var Djump= true
 
-func State_prosse():
+var Djump= false
+
+func State_prosse(delta):
 	if(character.is_on_floor()):
-		playback.travel(move_animation)
 		next_state=Groundstate
 
 func on_exit():
