@@ -1,10 +1,10 @@
-extends State
+extends StateMachine
 
 class_name Ground_state
 
 @export var JUMP_VELOCITY = -250.0
-@export var Airstate: State
-@export var Attackstate: State
+@export var Airstate: StateMachine
+@export var Attackstate: StateMachine
 @export var Jump_Aimation : String = "jump"
 @export var Fulling_Aimation : String = "fulling"
 @export var Attack_Aimation : String = "attack1"
@@ -12,7 +12,7 @@ class_name Ground_state
 func State_input (event : InputEvent):
 	if (event.is_action_pressed("jump")):
 		Jump()
-		next_state=Airstate
+		next_state =Airstate
 	elif (event.is_action_pressed("Attack")):
 		playback.travel(Attack_Aimation)
 		next_state=Attackstate

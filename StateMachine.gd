@@ -9,7 +9,7 @@ var states = {}
 
 func _ready():
 	for state in get_children():
-		state.fsm = self
+		state.fesm = self
 		states[state.name] = state
 		if current_state:
 			remove_child(state)
