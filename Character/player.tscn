@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://8vavnoqaoe0s" path="res://texter/Player/_Roll.png" id="9_v480k"]
 [ext_resource type="Script" path="res://Character/PSM.gd" id="10_m0s25"]
 [ext_resource type="Script" path="res://Character/Characters code/ground.gd" id="11_2sjkl"]
-[ext_resource type="Script" path="res://Character/Characters code/death.gd" id="12_3q38t"]
+[ext_resource type="Script" path="res://Character/Characters code/death.gd" id="11_4smtr"]
 [ext_resource type="Script" path="res://Character/Characters code/attack.gd" id="12_n5top"]
 [ext_resource type="Script" path="res://Character/Characters code/roll.gd" id="13_foeac"]
 [ext_resource type="Script" path="res://Character/Characters code/air.gd" id="14_vgtph"]
@@ -193,7 +193,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Area2D:monitoring")
+tracks/4/path = NodePath("../DamgeArea2D:monitoring")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -257,7 +257,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Area2D:monitoring")
+tracks/4/path = NodePath("../DamgeArea2D:monitoring")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -638,7 +638,7 @@ Animation_tree = NodePath("../AnimationTree")
 Current_state = NodePath("ground")
 
 [node name="death" type="Node" parent="PSM"]
-script = ExtResource("12_3q38t")
+script = ExtResource("11_4smtr")
 
 [node name="ground" type="Node" parent="PSM" node_paths=PackedStringArray("Airstate", "Attackstate")]
 script = ExtResource("11_2sjkl")
@@ -664,14 +664,14 @@ Groundstate = NodePath("../ground")
 [node name="heath" type="Node" parent="."]
 script = ExtResource("16_ksma6")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DamgeArea2D" type="Area2D" parent="."]
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="DamgeShape2D" type="CollisionShape2D" parent="DamgeArea2D"]
 position = Vector2(26, -2)
 shape = SubResource("RectangleShape2D_4vx1w")
 debug_color = Color(0.827451, 0.380392, 0.286275, 0.419608)
 
-[node name="playerdamge" type="Node" parent="Area2D"]
+[node name="playerdamge" type="Node" parent="DamgeArea2D"]
 
 [connection signal="animation_finished" from="AnimationTree" to="PSM/attack" method="_on_animation_tree_animation_finished"]
