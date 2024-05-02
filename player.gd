@@ -1,29 +1,107 @@
-extends MKsCharacter
+extends CharacterBody2D
 
-@onready var SPEED = 300.0
+var input 
+@export var speed = 100.0
+@export var gravity = 7
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+#variable for jump
+var jump_count = 0
+@export var jump_force = 250
+@export var max_jump = 2
 
+#State machining
+var current_state = player_states.MOVE
+enum player_states {MOVE, SWORD, DEAD}
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$Sword/Sword_colider.disabled = true
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-	# filp
-	if(velocity.x<0):
-		Sprite.flip_h=true
-		facing_right = true
-	elif (velocity.x>0):
-		Sprite.flip_h=false
-		facing_right = false
-	# movment
-	var direction = Input.get_axis("left", "right")
-	if direction && SM.if_Can_move():
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	move_and_slide()
-	Updata_animation()
+	match current_state:
+		player_states.MOVE:
+			movement(delta)
+		player_states.SWORD:
+			Sword(delta)
 
-func Updata_animation():
-	animation_tree.set("parameters/move/blend_position", velocity.x)
+func movement(delta):
+	input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	
+	if input !=0: 
+		if input > 0:
+			velocity.x += speed * delta
+			velocity.x = clamp(speed, 100.0, speed)
+			$Sprite2D.scale.x = 1
+			$Sword.position.x = 19
+			$AnimationPlayer.play("Walk")
+		
+		if input < 0:
+			velocity.x -= speed * delta
+			velocity.x = clamp(-speed, 100.0, -speed)
+			$Sprite2D.scale.x = -1
+			$Sword.position.x =  -19
+			$AnimationPlayer.play("Walk")
+			
+	
+	if input == 0:
+		velocity.x = 0
+		$AnimationPlayer.play("Idle")
+#code for jumping
+	if is_on_floor():
+		jump_count = 0
+	
+	if !is_on_floor():
+		if velocity.y < 0:
+			$AnimationPlayer.play("Jump")
+	if velocity.y > 0:
+			$AnimationPlayer.play("Fall")
+		
+			
+		
+	
+	if Input.is_action_pressed("ui_accept") && is_on_floor() && jump_count < max_jump:
+		jump_count += 1
+		velocity.y -= jump_force
+		velocity.x = input
+	if !is_on_floor() && Input.is_action_just_pressed("ui_accept") && jump_count < max_jump: 
+		jump_count += 1
+		velocity.y -= jump_force
+		velocity.x = input
+	if !is_on_floor() && Input.is_action_just_released("ui_accept") && jump_count < max_jump:
+		velocity.y = gravity
+		velocity.x = input
+	
+	if Input.is_action_just_pressed("ui_Sword"):
+		current_state = player_states.SWORD
+
+		
+	gravity_force()
+	move_and_slide()
+	
+func gravity_force():
+	velocity.y += gravity
+
+func Sword(delta):
+	$AnimationPlayer.play("Sword")
+	input_movement(delta)
+
+	
+func input_movement(delta):
+	input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	if input !=0: 
+		if input > 0:
+			velocity.x += speed * delta
+			velocity.x = clamp(speed, 100.0, speed)
+
+		if input < 0:
+			velocity.x -= speed * delta
+			velocity.x = clamp(-speed, 100.0, -speed)
+			
+		if input == 0:
+			velocity.x = 0
+	move_and_slide()
+	
+func reset_states():
+		current_state = player_states.MOVE

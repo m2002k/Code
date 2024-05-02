@@ -1,6 +1,6 @@
 extends Node
 
-class_name StateMachine
+class_name NEWMAp
 
 var current_state: Object
 
